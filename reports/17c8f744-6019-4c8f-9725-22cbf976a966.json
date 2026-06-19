@@ -1,0 +1,91 @@
+{
+  "run_id": "17c8f744-6019-4c8f-9725-22cbf976a966",
+  "generated_at": "2026-06-19T03:43:59.089398+00:00",
+  "repository": {
+    "name": "17c8f744-6019-4c8f-9725-22cbf976a966",
+    "url": "https://github.com/erev0s/VAmPI",
+    "default_branch": "master",
+    "last_commit": {
+      "sha": "f16052dce83f",
+      "message": "Merge pull request #72 from aaronhmiller/master",
+      "author": "erev0s",
+      "date": "2026-04-07T22:02:39+02:00"
+    },
+    "total_files": 17,
+    "languages": {
+      ".py": 11,
+      ".yml": 3,
+      ".yaml": 1,
+      ".md": 1,
+      ".json": 1
+    }
+  },
+  "score": 83.0,
+  "verdict": "PRODUCTION READY",
+  "finding_counts": {
+    "total": 4,
+    "by_severity": {
+      "high": 1,
+      "medium": 3
+    },
+    "by_agent": {
+      "bug": 4,
+      "security": 0,
+      "coverage": 0
+    }
+  },
+  "findings": [
+    {
+      "title": "Hardcoded secret key",
+      "description": "The application contains a hardcoded secret key which can lead to security vulnerabilities if exposed.",
+      "severity": "high",
+      "file_path": "config.py",
+      "line_start": 13,
+      "line_end": 13,
+      "code_snippet": "vuln_app.app.config['SECRET_KEY'] = 'random'",
+      "suggestion": "Use environment variables or a secure vault to manage secret keys.",
+      "cwe_id": "CWE-798",
+      "agent_type": "bug",
+      "promoted": false
+    },
+    {
+      "title": "Bare except clause",
+      "description": "The code contains a bare except clause which catches all exceptions without specifying the exception type. This can lead to catching unexpected exceptions and make debugging difficult.",
+      "severity": "medium",
+      "file_path": "api_views/books.py",
+      "line_start": 13,
+      "line_end": 15,
+      "code_snippet": "try:\n    jsonschema.validate(request_data, add_book_schema)\nexcept:",
+      "suggestion": "Specify the exception type to catch only the expected exceptions, e.g., `except jsonschema.exceptions.ValidationError:`.",
+      "cwe_id": "CWE-703",
+      "agent_type": "bug",
+      "promoted": false
+    },
+    {
+      "title": "Bare except clause",
+      "description": "The code contains a bare except clause which catches all exceptions without specifying the exception type. This can lead to catching unexpected exceptions and make debugging difficult.",
+      "severity": "medium",
+      "file_path": "api_views/users.py",
+      "line_start": 108,
+      "line_end": 110,
+      "code_snippet": "try:\n    auth_token = auth_header.split(\" \")[1]\nexcept:",
+      "suggestion": "Specify the exception type to catch only the expected exceptions, e.g., `except IndexError:`.",
+      "cwe_id": "CWE-703",
+      "agent_type": "bug",
+      "promoted": false
+    },
+    {
+      "title": "Bare except clause",
+      "description": "The code contains a bare except clause which catches all exceptions without specifying the exception type. This can lead to catching unexpected exceptions and make debugging difficult.",
+      "severity": "medium",
+      "file_path": "api_views/users.py",
+      "line_start": 174,
+      "line_end": 176,
+      "code_snippet": "except:\n    return Response(error_message_helper(\"An error occurred!\"), 200, mimetype=\"application/json\")",
+      "suggestion": "Specify the exception type to catch only the expected exceptions, e.g., `except Exception as e:`.",
+      "cwe_id": "CWE-703",
+      "agent_type": "bug",
+      "promoted": false
+    }
+  ]
+}

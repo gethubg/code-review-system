@@ -1,0 +1,17 @@
+{
+  "run_id": "b8adac2c-aae7-4022-b432-5a5fb599c2a5",
+  "generated_at": "2026-06-19T04:05:55.866326+00:00",
+  "repository": {},
+  "score": 100.0,
+  "verdict": "PRODUCTION READY",
+  "finding_counts": {
+    "total": 0,
+    "by_severity": {},
+    "by_agent": {
+      "bug": 0,
+      "security": 0,
+      "coverage": 0
+    }
+  },
+  "findings": []
+}

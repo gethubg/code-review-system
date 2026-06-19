@@ -1,0 +1,76 @@
+{
+  "run_id": "9886041b-6922-4f50-a1e8-a5cd00a0171e",
+  "generated_at": "2026-06-19T03:45:43.998629+00:00",
+  "repository": {
+    "name": "9886041b-6922-4f50-a1e8-a5cd00a0171e",
+    "url": "https://github.com/gethubg/transplant_health",
+    "default_branch": "main",
+    "last_commit": {
+      "sha": "61bb3e93ebfc",
+      "message": "Add files via upload",
+      "author": "gbragaspathy",
+      "date": "2026-06-04T23:04:20-04:00"
+    },
+    "total_files": 31,
+    "languages": {
+      ".py": 27,
+      ".json": 2,
+      ".toml": 1,
+      ".md": 1
+    }
+  },
+  "score": 91.0,
+  "verdict": "PRODUCTION READY",
+  "finding_counts": {
+    "total": 3,
+    "by_severity": {
+      "medium": 3
+    },
+    "by_agent": {
+      "bug": 3,
+      "security": 0,
+      "coverage": 0
+    }
+  },
+  "findings": [
+    {
+      "title": "Potential Resource Leak in Database Connection",
+      "description": "The database connection 'conn' is opened using 'shared.get_conn()' but there is no explicit closing of this connection. This could lead to resource leaks if the connection is not properly closed.",
+      "severity": "medium",
+      "file_path": "/tmp/code-review-clones/9886041b-6922-4f50-a1e8-a5cd00a0171e/app.py",
+      "line_start": 14,
+      "line_end": 14,
+      "code_snippet": "conn = shared.get_conn()",
+      "suggestion": "Ensure that the database connection is closed after its use. Consider using a context manager or explicitly calling a close method.",
+      "cwe_id": "CWE-772",
+      "agent_type": "bug",
+      "promoted": false
+    },
+    {
+      "title": "Potential Resource Leak in Database Connection",
+      "description": "The database connection 'conn' is opened using 'shared.get_conn()' but there is no explicit closing of this connection. This could lead to resource leaks if the connection is not properly closed.",
+      "severity": "medium",
+      "file_path": "/tmp/code-review-clones/9886041b-6922-4f50-a1e8-a5cd00a0171e/pages/2_Medications.py",
+      "line_start": 14,
+      "line_end": 14,
+      "code_snippet": "conn = shared.get_conn()",
+      "suggestion": "Ensure that the database connection is closed after its use. Consider using a context manager or explicitly calling a close method.",
+      "cwe_id": "CWE-772",
+      "agent_type": "bug",
+      "promoted": false
+    },
+    {
+      "title": "Potential Resource Leak in Database Connection",
+      "description": "The database connection 'conn' is opened using 'shared.get_conn()' but there is no explicit closing of this connection. This could lead to resource leaks if the connection is not properly closed.",
+      "severity": "medium",
+      "file_path": "/tmp/code-review-clones/9886041b-6922-4f50-a1e8-a5cd00a0171e/pages/4_Education_Documents.py",
+      "line_start": 18,
+      "line_end": 18,
+      "code_snippet": "conn = shared.get_conn()",
+      "suggestion": "Ensure that the database connection is closed after its use. Consider using a context manager or explicitly calling a close method.",
+      "cwe_id": "CWE-772",
+      "agent_type": "bug",
+      "promoted": false
+    }
+  ]
+}

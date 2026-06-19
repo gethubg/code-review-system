@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "run_id": "105125f1-2d94-4e5e-9f1c-44473b353e39",
+    "generated_at": "2026-06-19T03:13:56.118561+00:00",
+    "tool": "Code Review System",
+    "version": "0.1.0"
+  },
+  "repository": {
+    "url": "https://github.com/gethubg/transplant_health",
+    "name": "transplant_health",
+    "file_count": 0,
+    "language_breakdown": {}
+  },
+  "score": 100.0,
+  "verdict": "PRODUCTION READY",
+  "findings_by_severity": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "info": 0
+  },
+  "findings_by_agent": {
+    "bug": 0,
+    "security": 0,
+    "coverage": 0
+  },
+  "all_findings": [],
+  "findings_detail": {
+    "by_severity": {
+      "critical": [],
+      "high": [],
+      "medium": [],
+      "low": [],
+      "info": []
+    },
+    "by_agent": {}
+  }
+}

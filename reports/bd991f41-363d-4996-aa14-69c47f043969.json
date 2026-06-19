@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "run_id": "bd991f41-363d-4996-aa14-69c47f043969",
+    "generated_at": "2026-06-19T03:30:02.206544+00:00",
+    "tool": "Code Review System",
+    "version": "0.1.0"
+  },
+  "repository": {
+    "url": "https://github.com/mpirnat/lets-be-bad-guys",
+    "name": "lets-be-bad-guys",
+    "file_count": 0,
+    "language_breakdown": {}
+  },
+  "score": 100.0,
+  "verdict": "PRODUCTION READY",
+  "findings_by_severity": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "info": 0
+  },
+  "findings_by_agent": {
+    "bug": 0,
+    "security": 0,
+    "coverage": 0
+  },
+  "all_findings": [],
+  "findings_detail": {
+    "by_severity": {
+      "critical": [],
+      "high": [],
+      "medium": [],
+      "low": [],
+      "info": []
+    },
+    "by_agent": {}
+  }
+}

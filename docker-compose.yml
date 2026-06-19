@@ -1,0 +1,69 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: code-review-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4o}
+      - OPENAI_EMBEDDING_MODEL=${OPENAI_EMBEDDING_MODEL:-text-embedding-3-small}
+      - PINECONE_API_KEY=${PINECONE_API_KEY}
+      - PINECONE_INDEX_NAME=${PINECONE_INDEX_NAME:-code-review-chunks}
+      - PINECONE_ENVIRONMENT=${PINECONE_ENVIRONMENT:-gcp-starter}
+      - DATABASE_URL=sqlite+aiosqlite:///./data/db/reviews.db
+      - REPORTS_DIR=/data/reports
+      - CLONE_DIR=/data/repos
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:5173,http://localhost:3000}
+      - MCP_SERVER_HOST=${MCP_SERVER_HOST:-localhost}
+      - MCP_SERVER_PORT=${MCP_SERVER_PORT:-8001}
+    volumes:
+      - repos_data:/data/repos
+      - reports_data:/data/reports
+      - db_data:/data/db
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    restart: unless-stopped
+    depends_on: []
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: code-review-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+      - VITE_WS_URL=ws://localhost:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  repos_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./data/repos
+  reports_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./data/reports
+  db_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./data/db
